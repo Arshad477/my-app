@@ -8,7 +8,8 @@ node{
      sh "${mvnCMD} clean package"
    }
    stage('Build Docker Image'){
-     sh 'docker build -t arshad477/images .'
+     def docker = tool name: 'docker', type: 'docker'
+      sh "${docker} build -t arshad477/images ."
    }
    stage('Push Docker Image'){
      withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
