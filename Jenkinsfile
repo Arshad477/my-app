@@ -8,7 +8,7 @@ node{
      sh "${mvnCMD} clean package"
    }
    stage('Build Docker Image'){
-     def docker = tool name: 'localDocker', type: 'docker'
+     def docker = tool name: 'localDocker', type: 'Docker'
       sh "${docker}/Docker build -t arshad477/images ."
    }
    stage('Push Docker Image'){
